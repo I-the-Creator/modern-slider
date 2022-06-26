@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+import Slider from 'react-slick'
 import './App.css';
 
+import img1 from './images/img1.jpg'
+import img2 from './images/img2.jpg'
+import img3 from './images/img3.jpg'
+import img4 from './images/img4.jpg'
+
+
+const images = [img1, img2, img3, img4]
+
 function App() {
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed:500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h2 className="header">Modern React Carousel</h2>
+      <div className="slider">
+        <Slider {...settings}>
+          {
+            images.map((img, i) => (
+              <div className="slide" key={i}>
+                <img src={img} alt="" />
+              </div>
+            ))
+          }
+        </Slider>
+      </div>
     </div>
   );
 }
